@@ -1,6 +1,6 @@
 {
-    "name": "",
-    "description": "",
+    "name": "alleyinteractive/wp-doc-command",
+    "description": "View PHPDoc of any class or function.",
     "license": "MIT",
     "authors": [],
     "minimum-stability": "dev",
