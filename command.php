@@ -197,14 +197,8 @@ class Doc_Command {
 
 
 	private static function pass_through_pager( $out ) {
-		if ( strtoupper( substr( PHP_OS, 0, 3 ) ) === 'WIN' ) {
-			// no paging for Windows cmd.exe; sorry
-			echo $out;
-			return 0;
-		}
-
 		if ( false === ( $pager = getenv( 'PAGER' ) ) ) {
-			$pager = 'less -r';
+			$pager = WP_CLI\Utils\is_windows() ? 'more' : 'less -r';
 		}
 
 		// convert string to file handle
