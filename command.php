@@ -203,6 +203,10 @@ class Doc_Command {
 			return 0;
 		}
 
+		if ( false === ( $pager = getenv( 'PAGER' ) ) ) {
+			$pager = 'less -r';
+		}
+
 		// convert string to file handle
 		$fd = fopen( "php://temp", "r+" );
 		fputs( $fd, $out );
@@ -214,7 +218,7 @@ class Doc_Command {
 			2 => STDERR
 		);
 
-		return proc_close( proc_open( 'less -r', $descriptorspec, $pipes ) );
+		return proc_close( proc_open( $pager, $descriptorspec, $pipes ) );
 	}
 
 }
