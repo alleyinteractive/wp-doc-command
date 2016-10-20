@@ -1,6 +1,7 @@
 {
     "name": "alleyinteractive/wp-doc-command",
     "description": "View PHPDoc of any class, method, property, or function.",
+    "type": "wp-cli-package",
     "homepage": "https://github.com/alleyinteractive/wp-doc-command",
     "support": {
         "issues": "https://github.com/alleyinteractive/wp-doc-command"
