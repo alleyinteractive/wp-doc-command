@@ -1,21 +1,63 @@
 {
     "name": "alleyinteractive/wp-doc-command",
-    "description": "View PHPDoc of any class, method, property, or function.",
     "type": "wp-cli-package",
+    "description": "View PHPDoc of any class, method, property, or function.",
     "homepage": "https://github.com/alleyinteractive/wp-doc-command",
-    "support": {
-        "issues": "https://github.com/alleyinteractive/wp-doc-command"
-    },
     "license": "MIT",
-    "authors": [],
-    "minimum-stability": "dev",
-    "autoload": {
-        "files": [ "command.php" ]
+    "authors": [
+      {
+        "name": "Matthew Boynes",
+        "email": "info@alley.com"
+      }
+    ],
+    "require": {
+        "wp-cli/wp-cli": "^2.5"
     },
-    "require": {},
-    "extras": {
+    "require-dev": {
+        "wp-cli/wp-cli-tests": "^3.0.11"
+    },
+    "config": {
+        "process-timeout": 7200,
+        "sort-packages": true,
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.x-dev"
+        },
+        "bundled": false,
         "commands": [
             "doc"
         ]
+    },
+    "autoload": {
+        "psr-4": {
+            "Alley\\WP\\Doc\\": "src/"
+        },
+        "files": [
+            "command.php"
+        ]
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "scripts": {
+        "behat": "run-behat-tests",
+        "behat-rerun": "rerun-behat-tests",
+        "lint": "run-linter-tests",
+        "phpcs": "run-phpcs-tests",
+        "phpcbf": "run-phpcbf-cleanup",
+        "phpunit": "run-php-unit-tests",
+        "prepare-tests": "install-package-tests",
+        "test": [
+            "@lint",
+            "@phpcs",
+            "@phpunit",
+            "@behat"
+        ]
+    },
+    "support": {
+        "issues": "https://github.com/alleyinteractive/wp-doc-command/issues"
     }
 }
